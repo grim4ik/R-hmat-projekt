@@ -11,6 +11,4 @@
 =======
 Tere!!!
 
-Zdarova
-
-Piski siski
+Testdrivefor
