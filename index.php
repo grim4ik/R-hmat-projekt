@@ -1,1 +1,9 @@
-Tere!!!
+<?php 
+
+	// hello
+	
+	// welcome
+
+
+
+?>
