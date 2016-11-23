@@ -140,7 +140,7 @@ class Event {
 	
 	function deletePerson($id){
     	
-        $database = "if16_romil";		
+        $database = "if16_alekmina_4";		
 		
 		$stmt = $this->connection->prepare("
 		UPDATE whistle SET deleted=NOW()

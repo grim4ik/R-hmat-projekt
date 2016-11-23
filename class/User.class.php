@@ -67,13 +67,13 @@ class User {
 
 	}
 	
-		function signup($email, $username, $password, $name, $surname, $phone) {
+		function signup($email, $password, $login, $name, $surname, $phone) {
 	
 		
-		$stmt = $this->connection->prepare("INSERT INTO rt_users (email, username, password, name, surname, phone) VALUE (?, ?, ?, ?, ?, ?)");
+		$stmt = $this->connection->prepare("INSERT INTO rt_users (email, password, login, name, surname, phone) VALUE (?, ?, ?, ?, ?, ?)");
 		echo $this->connection->error;
 		
-		$stmt->bind_param("ssssss", $email, $username, $password, $name, $surname, $phone);
+		$stmt->bind_param("ssssss", $email, $password, $login, $name, $surname, $phone);
 		
 		if ( $stmt->execute() ) {
 			echo "õnnestus";

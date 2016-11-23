@@ -7,7 +7,7 @@
 	// saab kasutada nüüd $_SESSION muutujat
 	session_start();
 	
-	$database = "if16_alekmina_4";
+	$database = "if16_kirikotk_4";
 	$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 	// functions.php
 	
