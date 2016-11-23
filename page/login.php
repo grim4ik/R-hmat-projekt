@@ -128,26 +128,26 @@
 	
 		<div class="col-sm-4 col-md-3">
 
-		<h1>Logi sisse &lt;a href="#"&gt;</h1>
+		<h1>Logi sisse</h1>
 		<p style="color:red;"><?=$notice;?></p>
 		<form method="POST" >
 			
-			<label>E-post</label><br>
 			
 			<div class="form-group">
-				<input class="form-control" name="loginEmail" type="email">
+				<input class="form-control" name="loginEmail" placeholder="E-post" type="email">
 			</div>
 			
-			<br><br>
+			<br>
 			
 			<div class="form-group">
 				<input class="form-control" name="loginPassword" placeholder="Parool" type="password">
 			</div>
 			
-			<br><br>
+			<br>
 			
 			<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Logi sisse 1">
 			<input class="btn btn-primary btn-sm btn-block visible-xs-block" type="submit" value="Logi sisse 2">
+			<br><br>
 			<p><a href="reg.php">Loo kasutaja</a></p>
 		
 		</form>
