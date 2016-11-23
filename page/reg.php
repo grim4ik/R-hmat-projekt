@@ -26,14 +26,14 @@
 	if (isset ($_POST["signupEmail"])) {
 		
 		//on olemas
-		// kas epost on tÃ¼hi
+		// kas epost on tühi
 		if (empty ($_POST["signupEmail"])) {
 			
-			// on tÃ¼hi
-			$signupEmailError = "* VÃ¤li on kohustuslik!";
+			// on tühi
+			$signupEmailError = "* Väli on kohustuslik!";
 			
 		} else {
-			// email on olemas ja Ãµige
+			// email on olemas ja õige
 			$signupEmail = $_POST["signupEmail"];
 			
 		}
@@ -46,15 +46,15 @@
 		
 		if (empty ($_POST["signupPassword"])) {
 			
-			$signupPasswordError = "* VÃ¤li on kohustuslik!";
+			$signupPasswordError = "* Väli on kohustuslik!";
 			
 		} else {
 			
-			// parool ei olnud tÃ¼hi
+			// parool ei olnud tühi
 			
 			if ( strlen($_POST["signupPassword"]) < 8 ) {
 				
-				$signupPasswordError = "* Parool peab olema vÃ¤hemalt 8 tÃ¤hemÃ¤rkki pikk!";
+				$signupPasswordError = "* Parool peab olema vähemalt 8 tähemärkki pikk!";
 				
 			}
 			
@@ -66,17 +66,17 @@
 			
 			//error
 		}else {
-			// annad vÃ¤Ã¤rtuse
+			// annad väärtuse
 		}
 		
 	}
 	
-	//vaikimisi vÃ¤Ã¤rtus
+	//vaikimisi väärtus
 	$gender = "";
 	
 	if (isset ($_POST["gender"])) {
 		if (empty ($_POST["gender"])) {
-			$genderError = "* VÃ¤li on kohustuslik!";
+			$genderError = "* Väli on kohustuslik!";
 		} else {
 			$gender = $_POST["gender"];
 		}
@@ -92,7 +92,7 @@
 		 isset($_POST["signupPassword"]) 
 	  ) {
 		
-		//vigu ei olnud, kÃµik on olemas	
+		//vigu ei olnud, kõik on olemas	
 		echo "Salvestan...<br>";
 		echo "email ".$signupEmail."<br>";
 		echo "parool ".$_POST["signupPassword"]."<br>";
@@ -123,38 +123,46 @@
 
 <div class="container"> 
 	<div class="row">
-	
-
-	
-		<div class="col-sm-4 col-md-3">
-
-		<h1>Logi sisse &lt;a href="#"&gt;</h1>
-		<p style="color:red;"><?=$notice;?></p>
+		
+		<div class="col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3">
+		<h1>Loo kasutaja</h1>
+		
 		<form method="POST" >
 			
 			<label>E-post</label><br>
-			
-			<div class="form-group">
-				<input class="form-control" name="loginEmail" type="email">
-			</div>
+			<input name="signupEmail" type="email" value="<?=$signupEmail;?>"> <?php echo $signupEmailError; ?>
 			
 			<br><br>
-			
-			<div class="form-group">
-				<input class="form-control" name="loginPassword" placeholder="Parool" type="password">
-			</div>
+
+			<input name="signupPassword" placeholder="Parool" type="password"> <?php echo $signupPasswordError; ?>
 			
 			<br><br>
+					
+			<?php if ($gender == "female") { ?>
+				<input type="radio" name="gender" value="female" checked> female<br>
+			<?php } else { ?>
+				<input type="radio" name="gender" value="female" > female<br>
+			<?php } ?>
 			
-			<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Logi sisse 1">
-			<input class="btn btn-primary btn-sm btn-block visible-xs-block" type="submit" value="Logi sisse 2">
-			<p><a href="reg.php">Loo kasutaja</a></p>
+			<?php if ($gender == "male") { ?>
+				<input type="radio" name="gender" value="male" checked> male<br>
+			<?php } else { ?>
+				<input type="radio" name="gender" value="male" > male<br>
+			<?php } ?>
+			
+			
+			<?php if ($gender == "other") { ?>
+				<input type="radio" name="gender" value="other" checked> other<br>
+			<?php } else { ?>
+				<input type="radio" name="gender" value="other" > other<br>
+			<?php } ?>
+			<br>
+			
+			<input class="btn btn-primary btn-sm" type="submit" value="Loo kasutaja">
+			<p><a href="login.php"><-Tagasi</a></p>
 		
 		</form>
 		</div>
-		
-		<div class="col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3">
-
 
 	</body>
 </html>
