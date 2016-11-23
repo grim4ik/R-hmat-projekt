@@ -18,7 +18,7 @@ class User {
 		
 		$stmt = $this->connection->prepare("
 			SELECT id, email, password, created
-			FROM user_sample
+			FROM rt_users
 			WHERE email = ?
 		");
 		
@@ -67,13 +67,13 @@ class User {
 
 	}
 	
-		function signup($email, $password) {
+		function signup($email, $username, $password, $name, $surname, $phone) {
 	
 		
-		$stmt = $this->connection->prepare("INSERT INTO user_sample (email, password) VALUE (?, ?)");
+		$stmt = $this->connection->prepare("INSERT INTO rt_users (email, username, password, name, surname, phone) VALUE (?, ?, ?, ?, ?, ?)");
 		echo $this->connection->error;
 		
-		$stmt->bind_param("ss", $email, $password);
+		$stmt->bind_param("ssssss", $email, $username, $password, $name, $surname, $phone);
 		
 		if ( $stmt->execute() ) {
 			echo "õnnestus";

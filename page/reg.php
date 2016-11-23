@@ -60,6 +60,94 @@
 			
 		}
 		
+	$signupUsernameError = "*";
+	$signupUsername = "";
+	
+	//kas keegi vajutas nuppu ja see on olemas
+	
+	if (isset ($_POST["signupUsername"])) {
+		
+		//on olemas
+		// kas epost on tühi
+		if (empty ($_POST["signupUsername"])) {
+			
+			// on tühi
+			$signupUsername = "* Väli on kohustuslik!";
+			
+		} else {
+			// email on olemas ja õige
+			$signupUsername = $_POST["signupUsername"];
+			
+		}
+		
+	}
+	
+	$signupNameError = "*";
+	$signupName = "";
+	
+	//kas keegi vajutas nuppu ja see on olemas
+	
+	if (isset ($_POST["signupName"])) {
+		
+		//on olemas
+		// kas epost on tühi
+		if (empty ($_POST["signupName"])) {
+			
+			// on tühi
+			$signupNameError = "* Väli on kohustuslik!";
+			
+		} else {
+			// email on olemas ja õige
+			$signupName = $_POST["signupName"];
+			
+		}
+		
+	}
+	
+		$signupSurnameError = "*";
+	$signupSurname = "";
+	
+	//kas keegi vajutas nuppu ja see on olemas
+	
+	if (isset ($_POST["signupSurname"])) {
+		
+		//on olemas
+		// kas epost on tühi
+		if (empty ($_POST["signupSurname"])) {
+			
+			// on tühi
+			$signupSurnameError = "* Väli on kohustuslik!";
+			
+		} else {
+			// email on olemas ja õige
+			$signupSurname = $_POST["signupSurname"];
+			
+		}
+		
+	}
+	
+			$signupPhoneError = "*";
+	$signupPhone = "";
+	
+	//kas keegi vajutas nuppu ja see on olemas
+	
+	if (isset ($_POST["signupPhone"])) {
+		
+		//on olemas
+		// kas epost on tühi
+		if (empty ($_POST["signupPhone"])) {
+			
+			// on tühi
+			$signupPhoneError = "* Väli on kohustuslik!";
+			
+		} else {
+			// email on olemas ja õige
+			$signupPhone = $_POST["signupSPhone"];
+			
+		}
+		
+	}
+		
 		/* GENDER */
 		
 		if (!isset ($_POST["gender"])) {
@@ -88,20 +176,32 @@
 	
 	if ( $signupEmailError == "*" AND
 		 $signupPasswordError == "*" &&
-		 isset($_POST["signupEmail"]) && 
-		 isset($_POST["signupPassword"]) 
+		 $signupUsernameError == "*" &&
+		 $signupNameError == "*" &&
+		 $signupSurnameError == "*" &&
+		 $signupPhoneError == "*" &&
+		 isset($_POST["signupEmail"]) &&
+		isset($_POST["signupPassword"]) &&
+		isset($_POST["signupUsername"]) &&
+		isset($_POST["signupName"]) &&
+		isset($_POST["signupSurname"]) &&		 
+		 isset($_POST["signupPPhone"]) 
 	  ) {
 		
 		//vigu ei olnud, kõik on olemas	
 		echo "Salvestan...<br>";
 		echo "email ".$signupEmail."<br>";
+		echo "Login ".$signupUsername."<br>";
+		echo "Nimi ".$signupName."<br>";
+		echo "Perekonnanimi ".$signupSurname."<br>";
+		echo "Telefoni number ".$signupPhone."<br>";
 		echo "parool ".$_POST["signupPassword"]."<br>";
 		
 		$password = hash("sha512", $_POST["signupPassword"]);
 		
 		echo $password."<br>";
 		
-		$User->signup($signupEmail, $password);
+		$User->signup($signupEmail, $password, $signupUsername, $signupName, $signupSurname, $signupPhone);
 		
 		
 	}
@@ -129,34 +229,31 @@
 		
 		<form method="POST" >
 			
-			<label>E-post</label><br>
-			<input name="signupEmail" type="email" value="<?=$signupEmail;?>"> <?php echo $signupEmailError; ?>
+			<input name="signupEmail" placeholder="E-post" type="email" value="<?=$signupEmail;?>"> <?php echo $signupEmailError; ?>
+			
+			<br><br>
+			
+			<input name="signupUsername" placeholder="Login" type="login" value="<?=$signupUsername;?>"> <?php echo $signupUsernameError; ?>
 			
 			<br><br>
 
 			<input name="signupPassword" placeholder="Parool" type="password"> <?php echo $signupPasswordError; ?>
 			
 			<br><br>
+			
+			<input name="signupName" placeholder="Nimi" type="name" value="<?=$signupName;?>"> <?php echo $signupNameError; ?>
+			
+			<br><br>
+			
+			<input name="signupSurname" placeholder="Perekonnanimi" type="surname" value="<?=$signupSurname;?>"> <?php echo $signupSurnameError; ?>
+			
+			<br><br>
+			
+			<input name="signupPhone" placeholder="Telefoni number" type="phone" value="<?=$signupPhone;?>"> <?php echo $signupPhoneError; ?>
+			
+			<br><br>
 					
-			<?php if ($gender == "female") { ?>
-				<input type="radio" name="gender" value="female" checked> female<br>
-			<?php } else { ?>
-				<input type="radio" name="gender" value="female" > female<br>
-			<?php } ?>
-			
-			<?php if ($gender == "male") { ?>
-				<input type="radio" name="gender" value="male" checked> male<br>
-			<?php } else { ?>
-				<input type="radio" name="gender" value="male" > male<br>
-			<?php } ?>
-			
-			
-			<?php if ($gender == "other") { ?>
-				<input type="radio" name="gender" value="other" checked> other<br>
-			<?php } else { ?>
-				<input type="radio" name="gender" value="other" > other<br>
-			<?php } ?>
-			<br>
+
 			
 			<input class="btn btn-primary btn-sm" type="submit" value="Loo kasutaja">
 			<p><a href="login.php"><-Tagasi</a></p>
