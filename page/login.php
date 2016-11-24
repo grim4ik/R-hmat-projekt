@@ -11,10 +11,6 @@
 		exit();
 	}
 	
-<<<<<<< HEAD
-=======
-
->>>>>>> 3ab88b0058faaffb46fc5a19bbeaaeffc4305953
 	$notice = "";
 	//kas kasutaja tahab sisse logida
 	if ( isset($_POST["loginEmail"]) && 
@@ -29,18 +25,6 @@
 ?>
 <?php require("../header.php"); ?>
 
-<!DOCTYPE html>
-<html>
-<body>
-
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-
-</body>
-</html>
 
 <div class="container"> 
 	<div class="row">
@@ -58,6 +42,13 @@
 			<div class="form-group">
 				<input class="form-control" name="loginPassword" placeholder="Parool" type="password">
 			</div>
+			
+			
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
 			
 			<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Logi sisse 1">
 			<input class="btn btn-primary btn-sm btn-block visible-xs-block" type="submit" value="Logi sisse 2">
