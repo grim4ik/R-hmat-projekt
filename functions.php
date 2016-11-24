@@ -1,4 +1,4 @@
-ines (18 sloc)  631 Bytes
+
 <?php 
 	require("/home/kirikotk/config.php");
 	
