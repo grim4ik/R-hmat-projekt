@@ -1,13 +1,13 @@
+ines (18 sloc)  631 Bytes
 <?php 
-
-	require("/home/alekmina/config.php");
+	require("/home/kirikotk/config.php");
 	
 	// see fail peab olema siis seotud kõigiga kus
 	// tahame sessiooni kasutada
 	// saab kasutada nüüd $_SESSION muutujat
 	session_start();
 	
-	$database = "if16_alekmina_4";
+	$database = "if16_kirikotk_4";
 	$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 	// functions.php
 	
@@ -23,5 +23,7 @@
 	require("class/Helper.class.php");
 	$Helper = new Helper($mysqli);
 	
-
+	require("class/upload.php");
+	$Helper = new Helper($mysqli);
+	
 ?>
