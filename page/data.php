@@ -19,16 +19,19 @@
 	}
 	
 	
-	if ( isset($_POST["age"]) && 
-		 isset($_POST["color"]) && 
-		 !empty($_POST["age"]) &&
-		 !empty($_POST["color"]) 
+	if ( isset($_POST["ad_price"]) && 
+		 isset($_POST["ad_text"]) && 
+		 isset($_POST["ad_name"]) && 
+		 !empty($_POST["ad_price"]) &&
+		 !empty($_POST["ad_text"]) &&
+		 !empty($_POST["ad_name"]) 
 	) {
 		
 		
-		$color = $Helper->cleanInput($_POST["color"]);
+		$ad_text = $Helper->cleanInput($_POST["ad_text"]);
+		$ad_name = $Helper->cleanInput($_POST["ad_name"]);
 		
-		$Event->saveEvent($Helper->cleanInput($_POST["age"]), $color);
+		$Event->saveEvent($Helper->cleanInput($_POST["ad_price"]), $ad_text, $ad_name);
 	}
 	
 	// otsib
@@ -53,13 +56,8 @@
 	$people = $Event->getAllPeople($q, $sort, $order);
 	
 	
-	
-	
-	
-	
-	
 	echo "<pre>";
-	var_dump($people[5]);
+	var_dump($people[0]);
 	echo "</pre>";
 	
 ?>
@@ -79,12 +77,16 @@
 <h2>Salvesta sündmus</h2>
 <form method="POST" >
 	
-	<label>Vanus</label><br>
-	<input name="age" type="number">
+	<label>Toote nimetus</label><br>
+	<input name="ad_name" type="text">
+	<br><br>
+	
+	<label>Hind</label><br>
+	<input name="ad_price" type="text">
 	
 	<br><br>
-	<label>Värv</label><br>
-	<input name="color" type="color">
+	<label>Kirjeldus</label><br>
+	<input name="ad_text" type="text">
 	
 	<br><br>
 	
@@ -124,32 +126,46 @@
 					 
 					 
 			
-			$orderAge = "ASC";
+			$orderAd_price = "ASC";
 			if (isset($_GET["order"]) && 
 				$_GET["order"] == "ASC" &&
-				$_GET["sort"] == "age" ) {
+				$_GET["sort"] == "ad_price" ) {
 					
-				$orderAge = "DESC";
+				$orderAd_price = "DESC";
 			}
 		
 			$html .= "<th>
-						<a href='?q=".$q."&sort=age&order=".$orderAge."'>
-							Vanus
+						<a href='?q=".$q."&sort=ad_price&order=".$orderAd_price."'>
+							Hind
 						</a>
 					 </th>";
 			
 			
-			$orderColor = "ASC";
+			$orderAd_text = "ASC";
 			if (isset($_GET["order"]) && 
 				$_GET["order"] == "ASC" &&
-				$_GET["sort"] == "color" ) {
+				$_GET["sort"] == "ad_text" ) {
 					
-				$orderColor = "DESC";
+				$orderAd_text = "DESC";
 			}
 		
 			$html .= "<th>
-						<a href='?q=".$q."&sort=color&order=".$orderColor."'>
-							Värv
+						<a href='?q=".$q."&sort=ad_text&order=".$orderAd_text."'>
+							Text
+						</a>
+					 </th>";
+					 
+			$orderAd_name = "ASC";
+			if (isset($_GET["order"]) && 
+				$_GET["order"] == "ASC" &&
+				$_GET["sort"] == "ad_name" ) {
+					
+				$orderAd_name = "DESC";
+			}
+		
+			$html .= "<th>
+						<a href='?q=".$q."&sort=ad_text&order=".$orderAd_name."'>
+							Nimi
 						</a>
 					 </th>";
 					 
@@ -162,8 +178,8 @@
 			
 			$html .= "<tr>";
 				$html .= "<td>".$p->id."</td>";
-				$html .= "<td>".$p->age."</td>";
-				$html .= "<td>".$p->lightColor."</td>";
+				$html .= "<td>".$p->ad_price."</td>";
+				$html .= "<td>".$p->ad_text."</td>";
                 $html .= "<td><a class='btn btn-default btn xc' href='edit.php?id=".$p->id."'>
 				<span class='glyphicon glyphicon-pencil'></span> Muuda
 				</a>
@@ -175,28 +191,6 @@
 	$html .= "</table>";
 	
 	echo $html;
-?>
-
-<h2>Midagi huvitavat</h2>
-
-<?php 
-	foreach($people as $p) {
-		
-		$style = "
-		
-		    background-color:".$p->lightColor.";
-			width: 40px;
-			height: 40px;
-			border-radius: 20px;
-			text-align: center;
-			line-height: 39px;
-			float: left;
-			margin: 10px;
-		";
-				
-		echo "<p style ='  ".$style."  '>".$p->age."</p>";
-		
-	}
 ?>
 
 <?php require("../footer.php"); ?>
