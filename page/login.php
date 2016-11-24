@@ -11,6 +11,10 @@
 		exit();
 	}
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ab88b0058faaffb46fc5a19bbeaaeffc4305953
 	$notice = "";
 	//kas kasutaja tahab sisse logida
 	if ( isset($_POST["loginEmail"]) && 
