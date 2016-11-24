@@ -30,8 +30,6 @@
 <div class="container"> 
 	<div class="row">
 	
-
-	
 		<div class="col-sm-4 col-md-3">
 
 		<h1>Logi sisse</h1>
@@ -39,20 +37,17 @@
 		<form method="POST" >
 			
 			<div class="form-group">
-				<input class="form-control" placeholder="E-post" name="loginEmail" type="email">
+				<input class="form-control" placeholder="E-post" name="loginEmail" type="email" class="form-control" name="loginPassword" placeholder="Parool" type="password">
 			</div>
-			
-			<br>
 			
 			<div class="form-group">
 				<input class="form-control" name="loginPassword" placeholder="Parool" type="password">
 			</div>
 			
-			<br>
-			
 			<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Logi sisse 1">
 			<input class="btn btn-primary btn-sm btn-block visible-xs-block" type="submit" value="Logi sisse 2">
-			<a class="btn btn-primary btn-sm" href="reg.php">Loo kasutaja</a>
+			<a class="btn btn-primary btn-sm hidden-xs" href="reg.php">Loo kasutaja</a>
+			<a class="btn btn-primary btn-sm btn-block visible-xs-block" href="reg.php">Loo kasutaja</a>
 		
 		</form>
 		</div>
