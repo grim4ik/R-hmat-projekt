@@ -23,7 +23,4 @@
 	require("class/Helper.class.php");
 	$Helper = new Helper($mysqli);
 	
-	require("class/upload.php");
-	$Helper = new Helper($mysqli);
-	
 ?>

@@ -126,6 +126,21 @@
 					 
 					 
 			
+			$orderAd_name = "ASC";
+			if (isset($_GET["order"]) && 
+				$_GET["order"] == "ASC" &&
+				$_GET["sort"] == "ad_name" ) {
+					
+				$orderAd_name = "DESC";
+			}
+		
+			$html .= "<th>
+						<a href='?q=".$q."&sort=ad_name&order=".$orderAd_name."'>
+							Toote nimetus
+						</a>
+					 </th>";
+			
+			
 			$orderAd_price = "ASC";
 			if (isset($_GET["order"]) && 
 				$_GET["order"] == "ASC" &&
@@ -139,8 +154,7 @@
 							Hind
 						</a>
 					 </th>";
-			
-			
+					 
 			$orderAd_text = "ASC";
 			if (isset($_GET["order"]) && 
 				$_GET["order"] == "ASC" &&
@@ -151,21 +165,7 @@
 		
 			$html .= "<th>
 						<a href='?q=".$q."&sort=ad_text&order=".$orderAd_text."'>
-							Text
-						</a>
-					 </th>";
-					 
-			$orderAd_name = "ASC";
-			if (isset($_GET["order"]) && 
-				$_GET["order"] == "ASC" &&
-				$_GET["sort"] == "ad_name" ) {
-					
-				$orderAd_name = "DESC";
-			}
-		
-			$html .= "<th>
-						<a href='?q=".$q."&sort=ad_text&order=".$orderAd_name."'>
-							Nimi
+							Kirjeldus
 						</a>
 					 </th>";
 					 
@@ -178,6 +178,7 @@
 			
 			$html .= "<tr>";
 				$html .= "<td>".$p->id."</td>";
+				$html .= "<td>".$p->ad_name."</td>";
 				$html .= "<td>".$p->ad_price."</td>";
 				$html .= "<td>".$p->ad_text."</td>";
                 $html .= "<td><a class='btn btn-default btn xc' href='edit.php?id=".$p->id."'>

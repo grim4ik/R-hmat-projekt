@@ -44,12 +44,6 @@
 			</div>
 			
 			
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-			
 			<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Logi sisse 1">
 			<input class="btn btn-primary btn-sm btn-block visible-xs-block" type="submit" value="Logi sisse 2">
 			<a class="btn btn-primary btn-sm hidden-xs" href="reg.php">Loo kasutaja</a>

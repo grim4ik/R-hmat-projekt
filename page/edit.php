@@ -14,7 +14,7 @@
 	//kas kasutaja uuendab andmeid
 	if(isset($_POST["update"])){
 		
-		$Event->updatePerson(cleanInput($_POST["id"]), $Helper->cleanInput($_POST["ad_price"]), $Helper->cleanInput($_POST["ad_text"]), $Helper->cleanInput($_POST["ad_name"]));
+		$Event->updatePerson(cleanInput($_POST["id"]), $Helper->cleanInput($_POST["ad_name"]), $Helper->cleanInput($_POST["ad_price"]), $Helper->cleanInput($_POST["ad_text"]));
 		
 		header("Location: edit.php?id=".$_POST["id"]."&success=true");
         exit();	
@@ -38,7 +38,7 @@
   	<label for="ad_price" >Hind</label><br>
 	<input id="ad_price" name="price" type="text" value="<?php echo $p->ad_price;?>" ><br><br>
   	<label for="ad_text" >Kirjeldus</label><br>
-	<input id="ad_text" name="text" type="text" value="<?=$p->ad_text;?>"><br><br>
+	<input id="ad_text" name="text" type="text" value="<?php echo $p->ad_text;?>" ><br><br>
   	
 	<input type="submit" name="update" value="Salvesta">
   </form>
