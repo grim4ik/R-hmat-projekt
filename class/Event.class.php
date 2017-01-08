@@ -1,4 +1,4 @@
- x<?php
+<?php
 class Event {
     
     private $connection;
@@ -8,12 +8,12 @@ class Event {
 	}
 	
 		
-	function saveEvent($ad_price, $ad_text, $ad_name) {
+	function saveEvent($ad_price, $ad_text, $ad_name, $ad_tuup, $ad_people, $ad_phone) {
 				
-		$stmt = $this->connection->prepare("INSERT INTO rt_ad (ad_price, ad_text, ad_name) VALUE (?, ?, ?)");
+		$stmt = $this->connection->prepare("INSERT INTO rt_ad (ad_price, ad_text, ad_name, ad_tuup, ad_people, ad_phone) VALUE (?, ?, ?, ?, ?, ?)");
 		echo $this->connection->error;
 		
-		$stmt->bind_param("iss", $ad_price, $ad_text, $ad_name);
+		$stmt->bind_param("isssss", $ad_price, $ad_text, $ad_name, $ad_tuup, $ad_people, $ad_phone);
 		
 		if ( $stmt->execute() ) {
 			echo "õnnestus";
@@ -25,7 +25,7 @@ class Event {
 	
 	function getAllPeople($q, $sort, $order) {
 		
-		$allowedSort = ["id", "ad_price", "ad_text", "ad_name"];
+		$allowedSort = ["id", "ad_price", "ad_text", "ad_name", "ad_tuup", "ad_people", "ad_phone"];
 		
 		// sort ei kuulu lubatud tulpade sisse 
 		if(!in_array($sort, $allowedSort)){
@@ -46,7 +46,7 @@ class Event {
 			echo "otsin: ".$q;
 			
 			$stmt = $this->connection->prepare("
-				SELECT id, ad_price, ad_text, ad_name
+				SELECT id, ad_price, ad_text, ad_name, ad_tuup, ad_people, ad_phone
 				FROM rt_ad
 				WHERE deleted IS NULL
 				AND ( age LIKE ? OR color LIKE ? )
@@ -60,14 +60,14 @@ class Event {
 		} else {
 			// ei otsi
 			$stmt = $this->connection->prepare("
-				SELECT id, ad_price, ad_text, ad_name
+				SELECT id, ad_price, ad_text, ad_name, ad_tuup, ad_people, ad_phone
 				FROM rt_ad
 				WHERE deleted IS NULL
 				ORDER BY $sort $orderBy
 			");
 		}
 		
-		$stmt->bind_result($id, $ad_price, $ad_text, $ad_name);
+		$stmt->bind_result($id, $ad_price, $ad_text, $ad_name, $ad_tuup, $ad_people, $ad_phone);
 		$stmt->execute();
 		
 		$results = array();
@@ -81,6 +81,9 @@ class Event {
 			$human->ad_price = $ad_price;
 			$human->ad_text = $ad_text;
 			$human->ad_name = $ad_name;
+			$human->ad_tuup = $ad_tuup;
+			$human->ad_people = $ad_people;
+			$human->ad_phone = $ad_phone;
 			
 			
 			
@@ -97,9 +100,9 @@ class Event {
 	function getSinglePerosonData($edit_id){
     
 		
-		$stmt = $this->connection->prepare("SELECT ad_price, ad_text, ad_name FROM rt_ad WHERE id=? AND deleted IS NULL");
+		$stmt = $this->connection->prepare("SELECT ad_price, ad_text, ad_name, ad_tuup, ad_people, ad_phone FROM rt_ad WHERE id=? AND deleted IS NULL");
 		$stmt->bind_param("i", $edit_id);
-		$stmt->bind_result($ad_price, $ad_text, $ad_name);
+		$stmt->bind_result($ad_price, $ad_text, $ad_name, $ad_tuup, $ad_people, $ad_phone);
 		$stmt->execute();
 		
 		//tekitan objekti
@@ -111,6 +114,9 @@ class Event {
 			$p->ad_price = $ad_price;
 			$p->ad_text = $ad_text;
 			$p->ad_name = $ad_name;
+			$p->ad_tuup = $ad_tuup;
+			$p->ad_people = $ad_people;
+			$p->ad_phone = $ad_phone;
 			
 			
 		}else{
@@ -126,10 +132,10 @@ class Event {
 		return $p;
 		
 	}
-	function updatePerson($id, $ad_price, $ad_text, $ad_name){
+	function updatePerson($id, $ad_price, $ad_text, $ad_name, $ad_tuup, $ad_people, $ad_phone){
     			
-		$stmt = $this->connection->prepare("UPDATE rt_ad SET ad_price=?, ad_text=?, ad_name=? WHERE id=? AND deleted IS NULL");
-		$stmt->bind_param("isi",$ad_price, $ad_text, $ad_name, $id);
+		$stmt = $this->connection->prepare("UPDATE rt_ad SET ad_price=?, ad_text=?, ad_name=?, ad_tuup=?, ad_people=?, ad_phone=? WHERE id=? AND deleted IS NULL");
+		$stmt->bind_param("isissss",$ad_price, $ad_text, $ad_name, $ad_tuup, $ad_people, $ad_phone, $id);
 		
 		// kas õnnestus salvestada
 		if($stmt->execute()){
