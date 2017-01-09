@@ -83,6 +83,7 @@
 	<a href="?logout=1">logi välja</a>
 </p>
 
+<div class="col-sm-4 col-md-3">
 <h2>Salvesta sündmus</h2>
 <form method="POST" >
 	
@@ -93,37 +94,39 @@
 	<br><br>
 	
 	<label>Toote nimetus</label><br>
-	<input name="ad_name" type="text">
+	<input class="form-control" name="ad_name" type="text">
 	<br><br>
 	
 	<label>Hind</label><br>
-	<input name="ad_price" type="text">
+	<input class="form-control" name="ad_price" type="text">
 	
 	<br><br>
 	<label>Kirjeldus</label><br>
-	<input name="ad_text" type="text">
+	<input class="form-control" name="ad_text" type="text">
 	
 	<br><br>
 	<label>Nimi</label><br>
-	<input name="ad_people" type="text">
+	<input class="form-control" name="ad_people" type="text">
 	
     <br><br>
 	<label>Telefoni number</label><br>
-	<input name="ad_phone" type="text">
+	<input class="form-control" name="ad_phone" type="text">
 	
 	<br><br>
 	
-	<input type="submit" value="Salvesta">
+	<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Salvesta">
 
 </form>
+</div>
 
-
+<div class="col-sm-4 col-md-3">
 <h2>Arhiiv</h2>
 
 <form>
-	<input type="search" name="q" value="<?=$q;?>">
-	<input type="submit" value="Otsi">
+	<input class="form-control" type="search" name="q" value="<?=$q;?>"><br>
+	<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Otsi">
 </form>
+</div>
 
 <?php 
 	
