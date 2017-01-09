@@ -242,7 +242,7 @@
 			<br>
 					
 			<input class="btn btn-primary btn-sm" type="submit" value="Loo kasutaja">
-			<a class="btn btn-primary btn-sm" href="login.php"><-Tagasi</a>
+			<a class="btn btn-info" href="login.php"><-Tagasi</a>
 		
 		</form>
 		</div>

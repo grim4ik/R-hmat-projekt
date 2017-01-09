@@ -112,6 +112,12 @@
 	<label>Telefoni number</label><br>
 	<input class="form-control" name="ad_phone" type="text">
 	
+    <br><br>
+	<tr>
+     <td><label class="control-label">Laadi pilt</label></td>
+        <td><input class="input-group" type="file" name="user_image" accept="image/*" /></td>
+    </tr>
+	
 	<br><br>
 	
 	<input class="btn btn-primary btn-sm hidden-xs" type="submit" value="Salvesta">
@@ -264,6 +270,7 @@
 	
 	echo $html;
 ?>
+
 
 <?php require("../footer.php"); ?>
 
