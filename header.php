@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Sisselogimise leht</title>
+		<title>Rentimine</title>
 	</head>
 	<body>
 		
