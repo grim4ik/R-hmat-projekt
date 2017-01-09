@@ -48,9 +48,10 @@
 	
 ?>
 
+<h1>Rentimine</h1>
+
 <?php require("../header.php"); ?>
 
-<h1>Rentimine</h1>
 <div class="container"> 
 	<div class="row">
 	
@@ -58,7 +59,7 @@
 
 		<h1>Logi sisse</h1>
 		<p style="color:red;"><?=$notice;?></p>
-		<form class="POST" >
+		<form method="POST" >
 			
 			<div class="form-group">
 				<input class="form-control" placeholder="E-post" name="loginEmail" type="email">

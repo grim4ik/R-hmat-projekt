@@ -14,7 +14,7 @@
 	//kas kasutaja uuendab andmeid
 	if(isset($_POST["update"])){
 		
-		$Event->updatePerson(cleanInput($_POST["id"]), $Helper->cleanInput($_POST["ad_name"]), $Helper->cleanInput($_POST["ad_price"]), $Helper->cleanInput($_POST["ad_text"]));
+		$Event->updatePerson(cleanInput($_POST["id"]), $Helper->cleanInput($_POST["ad_name"]), $Helper->cleanInput($_POST["ad_price"]), $Helper->cleanInput($_POST["ad_text"]), $Helper->cleanInput($_POST["ad_people"]), $Helper->cleanInput($_POST["ad_phone"]));
 		
 		header("Location: edit.php?id=".$_POST["id"]."&success=true");
         exit();	
@@ -37,8 +37,12 @@
 	<input id="ad_name" name="name" type="text" value="<?php echo $p->ad_name;?>" ><br><br>
   	<label for="ad_price" >Hind</label><br>
 	<input id="ad_price" name="price" type="text" value="<?php echo $p->ad_price;?>" ><br><br>
-  	<label for="ad_text" >Kirjeldus</label><br>
+	<label for="ad_text" >Kirjeldus</label><br>
 	<input id="ad_text" name="text" type="text" value="<?php echo $p->ad_text;?>" ><br><br>
+	<label for="ad_people" >Nimi</label><br>
+	<input id="ad_people" name="people" type="text" value="<?php echo $p->ad_people;?>" ><br><br>
+    <label for="ad_phone" >Telefoni number</label><br>
+	<input id="ad_phone" name="phone" type="text" value="<?php echo $p->ad_phone;?>" ><br><br>
   	
 	<input type="submit" name="update" value="Salvesta">
   </form>
