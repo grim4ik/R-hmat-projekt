@@ -102,7 +102,7 @@
 	
 	<br><br>
 	<label>Kirjeldus</label><br>
-	<input class="form-control" name="ad_text" type="text">
+	<textarea rows="3" class="form-control" name="ad_text" type="text"></textarea>
 	
 	<br><br>
 	<label>Nimi</label><br>
