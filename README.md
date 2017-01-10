@@ -1,12 +1,11 @@
-•	Suurelt projekti nime: Rentable
-•	Suurelt projekti veebirakenduse pilt
-•	Ruhma liikmete nimed: Kirill Kotkas, Aleksander Minakov
-•	Eesmark: Kui te ei tahate mida osta, vaid tahate ainult rentida midagi.
-•	Kirjeldus: Ebay, aliexpress, okidoki. Vaid meil on asja rentimine
-•	Funktsionaalsus:
+â€¢	Suurelt projekti nime: Rentable
+â€¢	Ruhma liikmete nimed: Kirill Kotkas, Aleksander Minakov
+â€¢	Eesmark: Kui te ei tahate mida osta, vaid tahate ainult rentida midagi.
+â€¢	Kirjeldus: Ebay, aliexpress, okidoki. Vaid meil on asja rentimine
+â€¢	Funktsionaalsus:
 o	Saab lisada kuulutus
 o	Saab teha kasutaja ja sisselogida
-•	Andmebaasi skeem loetava pildina + tabelite loomise SQL laused:
+â€¢	Andmebaasi skeem loetava pildina + tabelite loomise SQL laused:
 CREATE TABLE `rt_ad` (
   `id` int(11) NOT NULL,
   `ad_price` text NOT NULL,
@@ -28,4 +27,4 @@ CREATE TABLE `rt_ad` (
   `phone` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-•	Kokkuvote: Keeruline oli see, et minikord ei saanud aru kuidas midagi tootab, ja parast seda oli vaja ise seda arusaada. Ebaonnestus oli selles, et olid problemid githab’iga.
+â€¢	Kokkuvote: Keeruline oli see, et minikord ei saanud aru kuidas midagi tootab, ja parast seda oli vaja ise seda arusaada. Ebaonnestus oli selles, et olid problemid githabâ€™iga.
